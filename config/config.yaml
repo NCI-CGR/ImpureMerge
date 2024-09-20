@@ -1,0 +1,10 @@
+directory_in: /DCEG/CGF/Bioinformatics/Production/software/ImputeMerge/data_sample/input_2
+directory_out: /DCEG/CGF/Bioinformatics/Production/software/ImputeMerge/data_sample/output_2
+#vcfFiles: /DCEG/CGF/GWAS/AdhocProjects/20220228_AsianPancreatic_GWAS/Chinese/impute_1000G/
+#infoFiles: /DCEG/CGF/GWAS/AdhocProjects/20220228_AsianPancreatic_GWAS/Chinese/impute_1000G/
+batches: "1,2,3"
+#qc:
+  # MAF Cutoff
+#  maf: 0.005
+  # Rsq Cutoff
+#  rsq: 0.3
