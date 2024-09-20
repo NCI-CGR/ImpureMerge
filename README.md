@@ -30,12 +30,12 @@ sbatch --partition=cgrq -o temp.stdout Snakefile.sh
 
 	* Example reformated info file:  
 
-	 |  CHROM | POS   |     ID       | REF  | ALT | AF | MAF | R2 | IMPUTED |
-	 | -----  |	-----	| ------------ | -----| ------ | ------- | --- | --- | --------- |
-	 | chr1   | 14675 | rs1339357485 | C | A | 0.00003 | 0.00003 | 0.44840 | IMPUTED |
-	 | chr1   | 14766 | rs1420833025 | T | G | 0.00004 | 0.00004 | 0.46070 | IMPUTED |
-	 | chr1   | 14808 | .            | A | G | 0.00002 | 0.00002 | 0.65686 | IMPUTED |
-	 | chr1   | 14838 | rs1401618782 | C | T | 0.00001 | 0.00001 | 0.18849 | IMPUTED |
+	 |  CHROM | POS   |     ID       | REF | ALT |   AF    |    MAF  |    R2   | IMPUTED |
+	 | -----  |-----  | ------------ | --- | --- | ------- | ------- | ------  | ------- |
+	 | chr1   | 14675 | rs1339357485 | C   | A   | 0.00003 | 0.00003 | 0.44840 | IMPUTED |
+	 | chr1   | 14766 | rs1420833025 | T   | G   | 0.00004 | 0.00004 | 0.46070 | IMPUTED |
+	 | chr1   | 14808 | .            | A   | G   | 0.00002 | 0.00002 | 0.65686 | IMPUTED |
+	 | chr1   | 14838 | rs1401618782 | C   | T   | 0.00001 | 0.00001 | 0.18849 | IMPUTED |
 
 
 	2. data – Intermediate files used to merge the final data
