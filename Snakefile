@@ -45,7 +45,6 @@ rule INFO_Reformat:
         infoFile = INPATH + "/" + "batch{BATCH}/chr{CHR}.info.gz"
     output:
         outFile = OUTPATH + "/info_Reformat/batch{BATCH}/chr{CHR}.Reformat_info.gz"
-    #priority: 59
     run:
         with gzip.open(input.infoFile,'rb') as vcffile:
             vcfheader=vcffile.readline()
@@ -71,8 +70,6 @@ rule INFO_Reformat:
 
 
 rule join:
-#    input:
-#        OUTPATH + "/info_Reformat/batch{BATCH}/chr{CHR}.Reformat_info.gz"
     output:
         OUTPATH + "/data/chr{CHR}.Reformat_info.gz"
     threads:
@@ -94,11 +91,6 @@ rule join:
             cols[cols[cols == dup].index.values.tolist()] = [dup +'_b'+ str(i) for i in range(1, dup_count[dup]+1)]
           concat_df.columns = cols
           concat_df.to_csv(CONCAT_DIR + f, sep='\t', index=False)
-#          fileList = os.listdir(CONCAT_DIR)
-#          for ii in fileList:
-#              newName = ii.replace('Reformat_info','info_pre.txt')
-#              if newName != ii:
-#                  os.rename(CONCAT_DIR+ii,CONCAT_DIR+newName)
 
 rule extend:
     input:
@@ -178,19 +170,7 @@ rule filter_bcftools:
         bcftools view {input.dose} -Oz --targets-file {input.pick} -o {output.out}
         module load tabix; tabix -f -p vcf {output.out}
         """
-'''
-rule rename_chr23:
-    input:
-        vcf = OUTPATH + "/VCF_filter/batch{BATCH}/chrX.dose.filter.vcf.gz",
-    #    tbi = OUTPATH + "/VCF_filter/batch{BATCH}/chrX.dose.filter.vcf.gz.tbi",
-    output:
-        vcf = OUTPATH + "/VCF_filter/batch{BATCH}/chr23.dose.filter.vcf.gz",
-    #    tbi = OUTPATH + "/VCF_filter/batch{BATCH}/chr23.dose.filter.vcf.gz.tbi",
-    run:
-        indir = OUTPATH
-        for f in Path(indir + '/VCF_filter').rglob('chrX.dose.filter.vcf.gz'):
-            os.rename(f, os.path.join(f.parent,'chr23.dose.filter.vcf.gz'))
-'''
+
 rule prepare_file:
     input:
         OUTPATH + "/VCF_filter/batch1/chr1.dose.filter.vcf.gz"
@@ -209,7 +189,6 @@ rule prepare_file:
 
         for index, (file_name, paths) in enumerate(file_paths.items()):
           csv_file_name = f'{outdir}{file_name}.csv'
-        #  csv_file_name = f'{output.one}'
           with open(csv_file_name, mode='w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             for word in paths:
