@@ -4,10 +4,10 @@
 Due to the input sample size limit by TOPMed imputation server, input genomic data is processed in batches and merged later.
 Goal of this pipeline is to take data imputed in batches and merge to produce a single file.
 
-This pipeline picks SNPs R2 > 0.25 (in atleast on one batch) and filters for R2 > 0.3 in merged file.
+This pipeline filters for SNPs R2 > 0.25 (in atleast on one batch) and filters for R2 > 0.3 in merged file.
 bcftools is used for merging.  
 
-
+Note: Due to the file size limit, input data sample has been uploaded into this repository
 ## Command line arguments
 
 Copy config.yaml and Snakefile.sh to your directory, edit the config file with input and output directory as needed
@@ -23,6 +23,8 @@ sbatch --partition=cgrq -o temp.stdout Snakefile.sh
 	* directory_in: /full/path/to/input/data_sample/input
 	* directory_out: /full/path/to/output/data_sample/output
 	* batches: number of batches separated by comma (Example: "1,2,3")
+ 	* rsq_1: rsq first filter cut-off (filters for rsq in each batch; default 0.25)
+  	& rsq_2: rsq second filter cut-off (filters for merged average rsq ; default 0.3)
 
 ## Output Folders/Files
 
