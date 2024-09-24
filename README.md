@@ -7,7 +7,6 @@ Goal of this pipeline is to take data imputed in batches and merge to produce a 
 This pipeline filters for SNPs R2 > 0.25 (in atleast on one batch) and filters for R2 > 0.3 in merged file.
 bcftools is used for merging.  
 
-Note: Due to the file size limit, input data sample has been uploaded into this repository.
 ## Command line arguments
 
 Copy config.yaml and Snakefile.sh to your directory, edit the config file with input and output directory as needed
